@@ -65,15 +65,26 @@ body {
    
     <h1 class="h3 mb-3 fw-normal">USER SIGN IN</h1>
     
-    <%message.forEach(message => { %>
-      <% if(message.length > 0) { %>
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <%= message %>
+  
+    <%message.forEach(msg => { %>
+      <% if(msg.length > 0 && (msg.includes('This user does not exist') || msg.includes('Wrong Password') || msg.includes('Please Sign In'))) { %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <%= msg %>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
      <% } %>
+
+     <% if(msg.length > 0 && msg.includes('User created successfully, please sign in')) { %>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <%= msg %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+   <% } %>
+    
     <% });  %>
 
 

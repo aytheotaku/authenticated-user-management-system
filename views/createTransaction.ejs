@@ -20,6 +20,8 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark d-flex p-2 flex-wrap" data-bs-theme="dark">
     <div class="container-fluid">
       <div>
+        <h4>Welcome <%=name  %> </h4>
+        <h5>Role: <%=role  %></h5>
       </div>
       <a href="/logout"><button class="btn btn-danger">LOG OUT</button></a>
     </div>
@@ -31,6 +33,21 @@
   
   <div class="container mx-auto mt-3 mb-3">
       <form class="d-flex my-form-class justify-content-center flex-column" action="transaction-entry" role="search" method="POST">
+ 
+
+        <%message.forEach(msg => { %>
+         <% if(msg.length > 0 && msg.includes('Transaction Registered')) { %>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <%= msg %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+       <% } %>
+        
+        <% });  %>
+    
+
         <div class="mt-2 mb-2">
           <label for="depositor_name">Depositor Name:</label>
           <input class="form-control me-2 " name="depositor_name" id="depositor_name" type="text" placeholder="Enter depositor's name" aria-label="Search" required>

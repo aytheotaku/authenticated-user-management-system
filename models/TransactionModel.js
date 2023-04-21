@@ -17,11 +17,10 @@ const TransactionSchema = new mongoose.Schema({
         type: Date,
         required: true,
     },
-    // registeredBy: {
-    //     type: String,
-    //     required: true,
-    //     lowercase: true
-    // }
+    registeredBy: {
+        type: String,
+        required: true,
+    }
 }, {
     timestamps: true
 })

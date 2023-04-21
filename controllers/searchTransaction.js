@@ -1,8 +1,26 @@
 const TransactionModel = require('../models/TransactionModel')
-const { nameConvert, reverseNameConvert } = require('../utils/stringFormatter')
+const { stringFormatter, nameConvert, reverseNameConvert } = require('../utils/stringFormatter')
 
 const searchTransaction = async (req, res) => {
     const {depositor_name, bank, transaction_amount, transaction_date} = req.body   
+
+    let role;
+    switch (true) {
+        case req.user.isRegistrar:
+            role = 'Registrar'
+            break;
+    
+        case req.user.isReconciler:
+            role = 'Reconciler'
+            break;
+    
+        case req.user.isAdmin:
+            role = 'Admin'
+            break;
+    
+        default:
+            break;
+    }
 
     try {
         let transaction = await TransactionModel.find({
@@ -22,7 +40,9 @@ const searchTransaction = async (req, res) => {
         if(transaction.length > 0){
             console.log(transaction)
             res.render('searchTransactionResults', {
-                transactionData : transaction
+                transactionData : transaction,
+                name : `${stringFormatter(req.user.first_name)} ${stringFormatter(req.user.last_name)}`,
+                role: role
             })  
         }
         if(transaction.length === 0){

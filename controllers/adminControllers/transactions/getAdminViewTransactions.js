@@ -12,6 +12,7 @@ const getAdminViewTransactions = async (req, res) => {
         transactions.forEach(element => {
             element.depositor_name = reverseNameConvert(element.depositor_name)
             element.bank = reverseNameConvert(element.bank)
+            element.registeredBy = reverseNameConvert(element.registeredBy)
         })
         res.render('adminViewTransactions', {
             transactionsData: transactions

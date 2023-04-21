@@ -7,6 +7,8 @@ const session = require('express-session');
 const passport = require('passport');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const flash = require('connect-flash');
+const { isAuthenticated } = require('./auth/isAuthenticated');
+const { roleRedirect } = require('./auth/roleAuth');
 
 
 
@@ -49,7 +51,7 @@ app.use(session({
     },
     store: store,
     resave: true,
-    saveUninitialized: false
+    saveUninitialized: true
 }))
 
 app.use(flash())
@@ -66,6 +68,10 @@ app.use('/admin', adminRouter)
 
 app.use(router)
 
+
+app.use('/', (req,res) => {
+    res.send('Resource does not exist').status(404)
+})
 
 
 app.use(errorHandler)

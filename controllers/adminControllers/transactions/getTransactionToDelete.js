@@ -14,6 +14,7 @@ const getTransactionToDelete = async (req, res) => {
     else{
         transaction.depositor_name = reverseNameConvert(transaction.depositor_name)
         transaction.bank = reverseNameConvert(transaction.bank)
+        transaction.registeredBy = reverseNameConvert(transaction.registeredBy)
         console.log(transaction)
         res.render('adminDeleteTransaction', {
             transactionData : transaction

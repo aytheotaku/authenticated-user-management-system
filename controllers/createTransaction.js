@@ -1,5 +1,5 @@
 const TransactionModel = require('../models/TransactionModel')
-const { nameConvert } = require('../utils/stringFormatter')
+const { nameConvert, stringFormatter } = require('../utils/stringFormatter')
 
 
 const createTransaction  =  async (req, res) => {
@@ -9,10 +9,12 @@ const createTransaction  =  async (req, res) => {
             depositor_name : nameConvert(depositor_name),
             bank,
             transaction_amount,
-            transaction_date
+            transaction_date,
+            registeredBy: `${nameConvert(req.user.first_name)}_${nameConvert(req.user.last_name)}`
         })
         console.log(transaction)
-        res.send('transaction has been created')
+        req.flash('transactionRegistered', 'Transaction Registered')
+        res.redirect('/transaction-entry')
 
     } catch (error) {
         console.log(error)

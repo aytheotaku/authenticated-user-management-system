@@ -25,7 +25,7 @@
                 <th scope="col">Bank</th>
                 <th scope="col">Amount</th>
                 <th scope="col">Transaction Date</th>
-                <th scope="col">Created By</th>
+                <th scope="col">Registered By</th>
            
                 <th></th>
               </tr>
@@ -39,7 +39,7 @@
                     <td scope="row"><%= transaction.bank%></th>
                     <td scope="row"><%= transaction.transaction_amount%></th>
                     <td scope="row"><%= transaction.transaction_date%></th>
-                    <td scope="row"><%= transaction.createdBy%></th>
+                    <td scope="row"><%= transaction.registeredBy%></th>
                     <td><a href="/admin/portal/delete-transaction/<%=transaction._id%>" style="color: red;">Delete Transaction</a</td>
                     </tr>
                     <%  }); %>

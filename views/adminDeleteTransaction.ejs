@@ -30,7 +30,11 @@
           </div>
           <div class="mt-2 mb-2">
             <label for="transaction_date">Transaction Date:</label>
-            <input class="form-control me-2 " name="transaction_date" id="transaction_date" type="text" placeholder="Enter Bank" aria-label="text" value="<%=transactionData.transaction_date%>" disabled>
+            <input class="form-control me-2 " name="transaction_date" id="transaction_date" type="text" aria-label="text" value="<%=transactionData.transaction_date%>" disabled>
+          </div>
+          <div class="mt-2 mb-2">
+            <label for="transaction_date">Registered By:</label>
+            <input class="form-control me-2 " name="registeredBy" id="transaction_date" type="text" aria-label="text" value="<%=transactionData.registeredBy%>" disabled>
           </div>
             <button class="btn my-btn-class btn-danger" type="submit">Delete Transaction</button>
            
@@ -71,6 +75,7 @@
         <h5>Bank: <strong><%=transactionData.bank%></strong> </h5>
         <h5>Transction Amount: <strong><%=transactionData.transaction_amount%></strong> </h5>
         <h5>Transaction Date: <strong><%=transactionData.transaction_date%></strong> </h5>
+        <h5>Registered By: <strong><%=transactionData.registeredBy%></strong> </h5>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary my-no" data-bs-dismiss="modal">No</button>

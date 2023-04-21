@@ -16,8 +16,7 @@ const createUser = async (req, res) => {
         
         let user = await User.findOne({email: email})
         if(user) {
-            req.flash('userExists', 'A user with that email already exists')
-
+            req.flash('userExists', `A user with the ${user.email} already exists`)
             res.redirect('/signUp')
         }
 
