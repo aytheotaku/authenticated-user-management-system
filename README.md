@@ -92,6 +92,10 @@ To access protected routes, simply create a user with the specific role and sign
 Please feel free to play around these roles and find the abilities of the other roles.
 
 
+https://user-images.githubusercontent.com/49108697/233733945-d4b61ef9-9cc3-4960-aa10-ee2f68fed7b7.mp4
+
+
+
 
 
 # PROJECT SETUP
