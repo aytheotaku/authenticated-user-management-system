@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <%- include('./partials/adminNavbar.ejs') %>
+
+
+
+    <form class="text-center d-flex my-form-class  flex-column" action="/admin/portal/edit-user/<%=userData.id%>" role="search" method="POST">
+
+            <h1>EDIT USER</h1>
+         
+          <div class="mt-2 mb-2">
+            <label for="first_name">First Name:</label>
+            <input class="form-control me-2 " name="first_name" id="first_name" type="text" placeholder="Enter first name" aria-label="text" value="<%=userData.first_name%>" required>
+          </div>
+
+          <div class="mt-2 mb-2">
+            <label for="last_name">Last Name:</label>
+            <input class="form-control me-2 " name="last_name" id="last_name" type="text" placeholder="Enter last name" aria-label="text" value="<%=userData.last_name %>"  required>
+          </div>
+
+          <div class="mt-2 mb-2">
+            <label for="email">Email:</label>
+            <input class="form-control me-2 " name="email" id="email" type="email" placeholder="Enter email" aria-label="text"  value="<%=userData.email %>" required>
+          </div>
+
+
+
+          <div class="mt-2 mb-2">
+        <label for="role">Change Role: </label> <br />
+        <select name="role" id="role" required>
+          <option value=""></option>
+          <option value="registrar">Registrar</option>
+          <option value="reconciler">Reconciler</option>
+          <option value="admin">Admin</option>
+       </select>
+      </div>
+        
+        
+        
+              <button class="btn my-btn-class btn-success" type="submit">Edit User</button>
+           
+        </form>
+    
+    
+    
+    
+     <style>
+        .my-form-class{
+          width: 50%;
+          margin: 0 auto;
+          /* padding: 10px; */
+        }
+        .my-btn-class{
+          width: 50%;
+          margin: 0 auto;
+        }
+    
+        .my-no{
+          margin-right: 20px;
+        }
+    
+    
+     </style>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit User? </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5>First Name: <strong id="user_first_name"></strong> </h5>
+        <h5>Last Name: <strong id="user_last_name"></strong>
+        <h5>Email: <strong id="user_email"></strong> </h5>
+        <h5>Role: <strong id="user_only_role"></strong> </h5>
+      
+        
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary my-no" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-success submit-transaction my-yes">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+
+
+
+<script>
+
+    const myForm  = document.querySelector('.my-form-class')
+    const editUser = document.querySelector('.btn-success')
+    const submitTransaction = document.querySelector('.submit-transaction')
+    
+    const popUpFirstName = document.getElementById('user_first_name')
+    const popUpLastName = document.getElementById('user_last_name')
+    const popUpEmail = document.getElementById('user_email')
+    const popUpOnlyRole = document.getElementById('user_only_role')
+
+    
+    const preSubmitActivity = (e) => {
+    
+    const inputFromUser = {}
+    
+    e.preventDefault()
+    
+    inputFromUser.firstName =  e.currentTarget[0].value.toLowerCase()
+    inputFromUser.lastName =  e.currentTarget[1].value.toLowerCase()
+    inputFromUser.email =  e.currentTarget[2].value.toLowerCase()
+    inputFromUser.onlyRole =  e.currentTarget[3].value.toLowerCase()
+
+    
+    
+    popUpFirstName.innerText = inputFromUser.firstName.toUpperCase()
+    popUpLastName.innerText = inputFromUser.lastName.toUpperCase()
+    popUpEmail.innerText = inputFromUser.email.toUpperCase()
+    popUpOnlyRole.innerText = inputFromUser.onlyRole.toUpperCase()
+
+    
+    editUser.setAttribute('data-bs-toggle', 'modal')
+    editUser.setAttribute('data-bs-target', '#exampleModal')
+    
+    editUser.click()
+      
+      submitTransaction.addEventListener('click', () => {
+          myForm.submit()
+      })
+    
+    }
+        
+    myForm.addEventListener('submit', preSubmitActivity)
+    </script>
+
+</body>
+
+</html>

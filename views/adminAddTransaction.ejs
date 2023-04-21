@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN PORTAL</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <%- include('./partials/adminNavbar.ejs') %>
+
+
+    <form class="text-center d-flex my-form-class  flex-column" action="/admin/portal/add-transactions" role="search" method="POST">
+            <h1>ADD TRANSACTION</h1>
+            <div class="mt-2 mb-2">
+                <label for="depositor_name">Depositor Name:</label>
+                <input class="form-control me-2 " name="depositor_name" id="depositor_name" type="text" placeholder="Enter depositor's name" aria-label="Search" required>
+              </div>
+        
+              <div class="mt-2 mb-2">
+                  <label for="bank">Bank</label> <br />
+        
+              <select name="bank" id="bank" required>
+                <option value=""></option>
+                <option value="bank_of_america">Bank Of America</option>
+                <option value="chase_bank">Chase Bank</option>
+                <option value="zen_life_bank">Zen Life Bank</option>
+      
+              </select>
+            </div>
+        
+        
+            <div class="mt-2 mb-2">
+              <label for="transaction_amount">Transaction Amount</label>
+              <input class="form-control me-2 mt-1 mb-1" name="transaction_amount" id="transaction_amount" type="number" placeholder="Enter transaction amount" aria-label="Search" required>
+            </div>
+        
+            
+            <div class="mt-2 mb-2">
+              <label for="transaction_date">Transaction Date</label>
+              <input class="form-control me-2 mt-1 mb-1" name="transaction_date" id="transaction_date" type="date" placeholder="Enter transaction date" aria-label="Search" required>
+            </div>
+            
+    
+        
+              <button class="btn my-btn-class btn-success" type="submit">Add Transaction</button>
+           
+        </form>
+    
+    
+    
+    
+     <style>
+        .my-form-class{
+          width: 50%;
+          margin: 0 auto;
+          /* padding: 10px; */
+        }
+        .my-btn-class{
+          width: 50%;
+          margin: 0 auto;
+        }
+    
+        .my-no{
+          margin-right: 20px;
+        }
+    
+    
+     </style>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add User</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5>Depositor Name: <strong id="admin_dep_name"></strong> </h5>
+        <h5>Bank: <strong id="admin_bank"></strong>
+        <h5>Transaction Amount: <strong id="admin_amount"></strong> </h5>
+        <h5>Transaction Date: <strong id="admin_date"></strong> </h5>
+        <h5>Store: <strong id="admin_store"></strong> </h5>
+        <h4>ADD TRANSACTION?</h4>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary my-no" data-bs-dismiss="modal">No</button>
+        <button type="button" class="btn btn-success submit-transaction my-yes">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+<script>
+
+const myForm  = document.querySelector('.my-form-class')
+const addTransaction = document.querySelector('.btn-success')
+const submitTransaction = document.querySelector('.submit-transaction')
+
+const popUpDepositorName = document.getElementById('admin_dep_name')
+const popUpBank = document.getElementById('admin_bank')
+const popUpTransAmount = document.getElementById('admin_amount')
+const popUpTransDate = document.getElementById('admin_date')
+const popUpStore = document.getElementById('admin_store')
+
+function preSubmitActivity(e){
+    e.preventDefault()
+    const inputFromUser = {}
+   
+    // =========== DATA FROM FORM  ============= //
+    inputFromUser.depositor_name = e.currentTarget[0].value.toLowerCase()
+    inputFromUser.bank = e.currentTarget[1].value
+    inputFromUser.transaction_amount = e.currentTarget[2].value
+    inputFromUser.transaction_date = e.currentTarget[3].value,
+    inputFromUser.store = e.currentTarget[4].value
+    //  =======================    //
+
+    popUpDepositorName.innerText = myConvert(inputFromUser.depositor_name)
+    popUpBank.innerText = myConvert(inputFromUser.bank)
+    popUpTransAmount.innerText = inputFromUser.transaction_amount
+    popUpTransDate.innerText = inputFromUser.transaction_date
+    popUpStore.innerText = myConvert(inputFromUser.store)
+
+
+    addTransaction.setAttribute('data-bs-toggle', 'modal')
+    addTransaction.setAttribute('data-bs-target', '#exampleModal')
+
+    addTransaction.click()
+    
+    submitTransaction.addEventListener('click', () => {
+      myForm.submit()
+    })
+}
+
+// FORMATS STRING INPUTED BY USER 
+function myConvert(string){
+    if(string.includes('_')){
+        const myArr = string.split("_")
+        const formattedWords = []
+        myArr.forEach(word => {
+            formattedWords.push(word.charAt(0).toUpperCase() + word.slice(1))
+        })
+
+        let myString = ""
+        formattedWords.forEach(word => {
+            myString = myString + " " + word 
+        })
+        let formattedString = myString.trim()
+        return formattedString
+
+    }
+
+    else if(string.includes(" ")){
+        const myArr = string.split(" ")
+        const formattedWords = []
+        myArr.forEach(word => {
+            formattedWords.push(word.charAt(0).toUpperCase() + word.slice(1))
+        })
+
+        let myString = ""
+        formattedWords.forEach(word => {
+            myString = myString + " " + word 
+        })
+        let formattedString = myString.trim()
+        return formattedString
+
+    }
+
+    else{
+       let formattedString = string.charAt(0).toUpperCase() + string.slice(1)
+       return formattedString
+    }
+}
+
+myForm.addEventListener('submit', preSubmitActivity)
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <%- include('./partials/adminNavbar.ejs') %>
+
+
+
+    <form class="text-center d-flex my-form-class  flex-column">
+            <h1>VIEW USERS</h1>
+
+            
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead >
+              <tr>
+             
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Role </th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider my-table-body">
+
+               
+                <%usersData.forEach(function(user){ %>
+                    <tr>
+                    <td scope="row"><%=user.first_name%></th>
+                    <td><%=user.last_name%></td>
+                    <td><%=user.email %></td>
+                    <td><%=user.role%></td>
+                    <td><a href="/admin/portal/edit-user/<%=user._id%>">Edit User </a</td>
+                    <td><a href="/admin/portal/delete-user/<%=user._id%>" style="color: red;">Delete User </a</td>
+                    </tr>
+                    <%  }); %>
+
+                
+            </tbody>
+          </table>
+      </div>
+      
+           
+        </form>
+    
+    
+    
+    
+     <style>
+        .my-form-class{
+          width: 50%;
+          margin: 0 auto;
+          /* padding: 10px; */
+        }
+        .my-btn-class{
+          width: 50%;
+          margin: 0 auto;
+        }
+    
+        .my-no{
+          margin-right: 20px;
+        }
+    
+    
+     </style>
+
+
+
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
