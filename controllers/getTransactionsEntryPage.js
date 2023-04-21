@@ -5,7 +5,6 @@ const { stringFormatter } = require("../utils/stringFormatter")
 const getTransactionsEntryPage = (req, res) => {
 
     let message
-    console.log(req.session.flash)
     // console.log((Object.keys(req.session.flash).length > 0))
     if(req.session.flash === undefined){
         message = []

@@ -32,7 +32,7 @@ const createUser = async (req, res) => {
                 isReconciler: role.isReconciler, 
                 isAdmin : role.isAdmin })
 
-            req.flash('userSuccess', 'User created successfully, please sign in')
+            req.flash('userSuccess', 'User created successfully')
 
             res.redirect('/signIn')
         }

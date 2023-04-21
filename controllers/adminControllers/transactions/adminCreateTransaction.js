@@ -13,7 +13,7 @@ const adminCreateTransaction  =  async (req, res) => {
             transaction_date,
             registeredBy: `${nameConvert(req.user.first_name)}_${nameConvert(req.user.last_name)}`
         })
-        console.log(transaction)
+  
         res.render('adminAddTransactionSuccess')
 
     } catch (error) {

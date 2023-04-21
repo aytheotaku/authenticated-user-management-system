@@ -56,9 +56,7 @@ app.use(session({
 
 app.use(flash())
 
-mongoose.connect(process.env.DB_CONNECTION_URI)
-.then(() => console.log('Connected to database successfully'))
-.catch(err => console.log(`An error has occurred: ${err}`))
+
 
 require('./config/passport');
 app.use(passport.initialize())
@@ -76,4 +74,9 @@ app.use('/', (req,res) => {
 
 app.use(errorHandler)
 
-app.listen(process.env.PORT || 3000, () => console.log(`Listening at port`))
+mongoose.connect(process.env.DB_CONNECTION_URI)
+.then(() => {
+    console.log('Connected to database successfully')
+    app.listen(process.env.PORT || 3000, () => console.log(`Listening at port`))
+}).catch(err => console.log(`An error has occurred: ${err}`))
+

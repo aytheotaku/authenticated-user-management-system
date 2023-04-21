@@ -75,7 +75,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Add User</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Transaction</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -83,7 +83,6 @@
         <h5>Bank: <strong id="admin_bank"></strong>
         <h5>Transaction Amount: <strong id="admin_amount"></strong> </h5>
         <h5>Transaction Date: <strong id="admin_date"></strong> </h5>
-        <h5>Store: <strong id="admin_store"></strong> </h5>
         <h4>ADD TRANSACTION?</h4>
 
       </div>
@@ -114,7 +113,7 @@ const popUpDepositorName = document.getElementById('admin_dep_name')
 const popUpBank = document.getElementById('admin_bank')
 const popUpTransAmount = document.getElementById('admin_amount')
 const popUpTransDate = document.getElementById('admin_date')
-const popUpStore = document.getElementById('admin_store')
+
 
 function preSubmitActivity(e){
     e.preventDefault()
@@ -125,14 +124,14 @@ function preSubmitActivity(e){
     inputFromUser.bank = e.currentTarget[1].value
     inputFromUser.transaction_amount = e.currentTarget[2].value
     inputFromUser.transaction_date = e.currentTarget[3].value,
-    inputFromUser.store = e.currentTarget[4].value
+
     //  =======================    //
 
     popUpDepositorName.innerText = myConvert(inputFromUser.depositor_name)
     popUpBank.innerText = myConvert(inputFromUser.bank)
     popUpTransAmount.innerText = inputFromUser.transaction_amount
     popUpTransDate.innerText = inputFromUser.transaction_date
-    popUpStore.innerText = myConvert(inputFromUser.store)
+
 
 
     addTransaction.setAttribute('data-bs-toggle', 'modal')

@@ -33,12 +33,9 @@ const searchTransaction = async (req, res) => {
         transaction.forEach(element => {
             element.depositor_name = reverseNameConvert(element.depositor_name)
             element.bank = reverseNameConvert(element.bank)
-            console.log(element.depositor_name)
-            console.log(element.bank)
         })
 
         if(transaction.length > 0){
-            console.log(transaction)
             res.render('searchTransactionResults', {
                 transactionData : transaction,
                 name : `${stringFormatter(req.user.first_name)} ${stringFormatter(req.user.last_name)}`,

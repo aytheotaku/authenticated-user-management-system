@@ -134,14 +134,14 @@ e.preventDefault()
 inputFromUser.firstName =  e.currentTarget[0].value.toLowerCase()
 inputFromUser.lastName =  e.currentTarget[1].value.toLowerCase()
 inputFromUser.email =  e.currentTarget[2].value.toLowerCase()
-inputFromUser.password =  e.currentTarget[3].value.toLowerCase()
+inputFromUser.password =  e.currentTarget[3].value
 inputFromUser.role =  e.currentTarget[4].value.toLowerCase()
 
 
 popUpFirstName.innerText = inputFromUser.firstName.toUpperCase()
 popUpLastName.innerText = inputFromUser.lastName.toUpperCase()
 popUpEmail.innerText = inputFromUser.email.toUpperCase()
-popUpPassword.innerText = inputFromUser.password.toUpperCase()
+popUpPassword.innerText = inputFromUser.password
 popUpRole.innerText = inputFromUser.role.toUpperCase()
 
 addUser.setAttribute('data-bs-toggle', 'modal')

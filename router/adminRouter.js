@@ -35,7 +35,7 @@ router.get('/portal/delete-user/:id', isAuthenticated, isAuthAsAdmin, getAdminDe
 
 router.post('/portal/delete-user/:id', isAuthenticated, isAuthAsAdmin, deleteUser)
 
-router.post('/portal/edit-user/:id', isAuthenticated, isAuthAsAdmin, deleteUser)
+router.post('/portal/edit-user/:id', isAuthenticated, isAuthAsAdmin, editUser)
 
 router.get('/portal/add-transaction', isAuthenticated, isAuthAsAdmin, getAdminAddTransactionsPage)
 

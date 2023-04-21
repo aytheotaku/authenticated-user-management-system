@@ -42,8 +42,6 @@ router.post('/signUp', createUser)
 router.post('/signIn', passport.authenticate('local', {failureRedirect: '/signIn', failureFlash:true, successRedirect: '/role'}))
 
 router.get('/logout', (req, res, next) => {
-    console.log(req.session)
-    console.log(req.user)
     next()
 },(req, res, next) => {
     req.logout((err) => {if(err){
