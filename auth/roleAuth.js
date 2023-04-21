@@ -43,7 +43,6 @@ const roleRedirect = (req, res, next) => {
                 res.redirect('/admin/portal')
                 break;
             default:
-                console.log('dunno who you are')
                 res.send('dunno who you are')
         }
     }

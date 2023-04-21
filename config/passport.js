@@ -35,8 +35,8 @@ passport.deserializeUser(async (user, done) => {
 
         // console.log(`This is the user object in the deserialize function before reaching the find one: ${user}`)
         user = await User.findOne({_id: user})
-        console.log(user)
-        console.log(`the found user in the deserialize is : ${user}`)
+        // console.log(user)
+        // console.log(`the found user in the deserialize is : ${user}`)
         return done(null, user) //this creates assigns the user object found to the req.user object made by passport connection to the express-sessions library
 
     } catch (error) {
