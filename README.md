@@ -67,7 +67,7 @@ The flow of Cookies and Sessions is as flows:
 
 
 --- 
-In the scope of this project, I have written server-side code using this technique to let my server keep information about users and their roles to be able to guard certain resources from certain users depending on these roles.
+In the scope of this project, I have written server-side code using this technique to let my server keep information about users and their roles to be able to guard certain resources from certain users depending on these roles. A User's session is maintained for a week, so even if you close the browser, the server still remembers who you are for up to a week. (p.s, this is if you don't log out or clear cookies ;) )
 
 I have used Passport and the Passport-local strategy to attach authenticated users to sessions and guard resources based on their roles. Of-course this can be implemented without passport but that would require a lot of custom middlewares and that would take more time. (Why reinvent the wheel?)
 
@@ -121,9 +121,9 @@ npm audit fix --force
 3. Create .env file <br>
 When you clone this repository you will not have an env file because it would have been gitignored. Create yours and store the credentials. for example
 ```
-DB_CONNECTION_URI =  'mongodb://127.0.0.1:27017/UserDB'
-SESSION_STORE_COLLECTION = 'mySessions'
-SESSION_SECRET = 'thisismyparticularsessionsecret'
+DB_CONNECTION_URI =  'mongodb://127.0.0.1:27017/authDb'
+SESSION_STORE_COLLECTION = 'sessionsCollection'
+SESSION_SECRET = 'sessionsecret'
 
 ```
 4. 
