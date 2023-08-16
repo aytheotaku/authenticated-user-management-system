@@ -78,6 +78,6 @@ app.use(errorHandler)
 mongoose.connect(process.env.DB_CONNECTION_URI)
 .then(() => {
     console.log('Connected to database successfully')
-    app.listen(process.env.PORT || 3000, () => console.log(`Listening at port`))
+    app.listen(process.env.PORT || 3000, () => console.log(`Listening at port ${process.env.PORT}`))
 }).catch(err => console.log(`An error has occurred: ${err}`))
 
