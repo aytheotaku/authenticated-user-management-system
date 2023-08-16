@@ -123,6 +123,7 @@ npm audit fix --force
 3. Create .env file <br>
 When you clone this repository you will not have an env file because it would have been gitignored. Create yours and store the credentials. for example
 ```
+PORT NUMBER = PORT NUMBER GOES HERE
 DB_CONNECTION_URI =  'mongodb://127.0.0.1:27017/authDb'
 SESSION_STORE_COLLECTION = 'sessionsCollection'
 SESSION_SECRET = 'sessionsecret'
