@@ -1,3 +1,5 @@
+The app is live at https://ausm.ayomideakinbo.live/ 
+
  Please feel free to visit my Notion blog page where I elaborate on the project and share my thought process that informed its development. https://www.notion.so/Authenticated-User-Management-System-ec3acee554d341c09360c6abed6b89e9?pvs=4/
 
 ## created with:
